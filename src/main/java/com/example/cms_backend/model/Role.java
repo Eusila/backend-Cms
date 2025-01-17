@@ -1,4 +1,7 @@
 package com.example.cms_backend.model;
 
-public class Role {
+public enum Role
+{
+        ADMIN, SELLER, BUYER
+
 }
