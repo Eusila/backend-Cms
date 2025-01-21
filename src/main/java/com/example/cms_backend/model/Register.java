@@ -13,6 +13,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 
+
+@Table(name ="RegisterMaster")
+
 public class Register
 {
 
@@ -32,6 +35,9 @@ public class Register
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "cattle_id")
+    private Cattle cattle;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_id", referencedColumnName = "id")

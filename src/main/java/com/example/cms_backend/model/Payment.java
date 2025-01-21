@@ -12,6 +12,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
+
+
+@Table(name ="PaymentMaster")
 public class Payment
 {
     @Id

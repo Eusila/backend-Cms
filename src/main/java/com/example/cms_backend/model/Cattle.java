@@ -12,6 +12,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 
+
+@Table(name ="CattleMaster")
 public class Cattle
 {
     @Id
