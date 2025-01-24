@@ -8,17 +8,17 @@ import com.example.cms_backend.dto.UserDTO;
 import com.example.cms_backend.model.Cattle;
 import com.example.cms_backend.model.Payment;
 import com.example.cms_backend.model.Register;
-import com.example.cms_backend.model.User;
+import com.example.cms_backend.model.Users;
 
 public class Mapper
 {
-    public static UserDTO toUserDTO(User user) {
+    public static UserDTO toUserDTO(Users users) {
         UserDTO dto = new UserDTO();
-        dto.setId(user.getId());
-        dto.setName(user.getName());
-        dto.setEmail(user.getEmail());
-        dto.setContact(user.getContact());
-        dto.setAddress(user.getAddress());
+        dto.setId(users.getId());
+        dto.setUsername(users.getUsername());
+        dto.setEmail(users.getEmail());
+        dto.setContact(users.getContact());
+        dto.setAddress(users.getAddress());
         return dto;
     }
 
@@ -29,7 +29,7 @@ public class Mapper
         dto.setBreed(cattle.getBreed());
         dto.setWeight(cattle.getWeight());
         dto.setPrice(cattle.getPrice());
-        dto.setImage(cattle.getImage());
+        dto.setImage(cattle.getImageUrl());
         return dto;
     }
 
@@ -47,7 +47,7 @@ public class Mapper
         dto.setId(register.getId());
         dto.setRegistrationId(register.getRegistrationId());
         dto.setDateAdded(register.getDateAdded());
-        dto.setUser(toUserDTO(register.getUser()));
+        dto.setUser(toUserDTO(register.getUsers()));
         if (register.getCattle() != null) {
             dto.setCattle(toCattleDTO(register.getCattle()));
         }

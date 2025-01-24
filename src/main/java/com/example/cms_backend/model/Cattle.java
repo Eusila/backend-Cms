@@ -34,11 +34,11 @@ public class Cattle
     private Double price;
 
     @Column(nullable = false)
-    private String image;
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "seller_id", nullable = false)
-    private User seller;
+    private Users seller;
 
     @Column(nullable = false)
     private boolean approved = false;

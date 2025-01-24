@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CmsBackendApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CmsBackendApplication.class, args);
 	}
 

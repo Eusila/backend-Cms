@@ -2,8 +2,12 @@ package com.example.cms_backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -11,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 
  @Table(name ="Users")
-public class User
+public class Users
 {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
@@ -19,7 +23,7 @@ public class User
     private UUID id;
 
     @Column(nullable = false)
-    private String name;
+    private String username;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -36,4 +40,14 @@ public class User
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
+
+
+    public Collection<? extends GrantedAuthority> getRolesAsAuthorities() {
+        return roles.stream()
+                .map(role -> (GrantedAuthority) () -> role)
+                .collect(Collectors.toList());
+    }
 }
